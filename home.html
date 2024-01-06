@@ -9,7 +9,7 @@
 <body>
     <h1>Cat Pong</h1>
     <!-- Game Menu -->
-    <div id="gameMenu"></div>
+    <div id="gameMenu">
         <h2>Game Menu</h2>
         <button onclick="showOptions()">Options</button>
         <button onclick="redirectToGamePage()">Start game</button> 
@@ -17,11 +17,13 @@
     <div id="optionsPopup" class="popup">
         <div class="popup-content">
             <span class="close" onclick="closeOptionsPopup()">&times;</span>
+            <!-- this span tag is used to create the x on my menu which im still debating on creating a nicer one in css -->
             <h2>Options</h2>
             <label for="totalLives">Number of lives</label>
             <input type="number" id="totalLives" min="1" max="9" value="3">
             <button onclick="applyOptions()">Apply</button>
         </div>
+    </div>
     </div>
 
 
