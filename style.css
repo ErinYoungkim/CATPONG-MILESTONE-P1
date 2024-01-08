@@ -4,6 +4,11 @@ body {
 h1 {
     text-align: center;
     color: #333;
+    font-family: 'Comic Sans MS', cursive;
+}
+h2 {
+    font-family: 'Comic Sans MS', cursive;
+    color: #333;
 }
 #gameMenu {
     display: flex;
@@ -12,7 +17,7 @@ h1 {
     align-items: center;
     height: 80vh;
     flex-direction: column;
-    border: 2px solid black;
+    /* border: 2px solid black; */
 }
 button {
     background-color: #c48ee4;
@@ -44,9 +49,68 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .close {
     position: absolute;
-    bottom: 422px;
+    bottom: 488px;
     right: 777px;
     font-size: 40px;
     color: #333;
     cursor: pointer;
+}
+@keyframes cascadeBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    15% {
+        transform: translateY(-15px);
+    }
+    30% {
+        transform: translateY(0);
+    }
+    45% {
+        transform: translateY(-25px);
+    }
+    60% {
+        transform: translateY(0);
+    }
+    75% {
+        transform: translateY(-20px);
+    }
+    90% {
+        transform: translateY(0);
+    }
+}
+h1 {
+    display: inline-block;
+    font-size: 2em;
+}
+h1 span {
+    display: inline-block;
+    animation: cascadeBounce 2s infinite;
+}
+h1 span:nth-child(1) {
+    animation: cascadeBounce 2s infinite 0.1s;
+    -webkit-animation: cascadeBounce 2s infinite 0.1s;
+}
+h1 span:nth-child(2) {
+    animation: cascadeBounce 2s infinite 0.2s;
+    -webkit-animation: cascadeBounce 2s infinite 0.2s;
+}
+h1 span:nth-child(3) {
+    animation: cascadeBounce 2s infinite 0.3s;
+    -webkit-animation: cascadeBounce 2s infinite 0.3s;
+}
+h1 span:nth-child(4) {
+    animation: cascadeBounce 2s infinite 0.4s;
+    -webkit-animation: cascadeBounce 2s infinite 0.4s;
+}
+h1 span:nth-child(5) {
+    animation: cascadeBounce 2s infinite 0.5s;
+    -webkit-animation: cascadeBounce 2s infinite 0.5s;
+}
+h1 span:nth-child(6) {
+    animation: cascadeBounce 2s infinite 0.6s;
+    -webkit-animation: cascadeBounce 2s infinite 0.6s;
+}
+h1 span:nth-child(7) {
+    animation: cascadeBounce 2s infinite 0.7s;
+    -webkit-animation: cascadeBounce 2s infinite 0.7s;
 }
