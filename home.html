@@ -1,43 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home Page</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <!-- Game Menu -->
     <div id="gameMenu">
-        <h1>
-            <span id="firstLetter">C</span>
-            <span>a</span>
-            <span>t</span>
-            <span></span>
-            <span>P</span>
-            <span>o</span>
-            <span>n</span>
-            <span>g</span>
-        </h1>
-        <h2>Game Menu</h2>
-        <button onclick="showOptions()">Options</button>
-        <button onclick="redirectToGamePage()">Start game</button> 
-    <!-- i want to redirect my users from one page to another and in this case the main menu to the actual game -->
-    <div id="optionsPopup" class="popup">
+      <h1>
+        <span id="firstLetter">C</span>
+        <span>a</span>
+        <span>t</span>
+        <span></span>
+        <span>P</span>
+        <span>o</span>
+        <span>n</span>
+        <span>g</span>
+      </h1>
+      <h2>Game Menu</h2>
+      <button onclick="showOptions()">Options</button>
+      <button onclick="redirectToGamePage()">Start game</button>
+      <!-- i want to redirect my users from one page to another and in this case the main menu to the actual game -->
+      <div id="optionsPopup" class="popup">
         <div class="popup-content">
-            <span class="close" onclick="closeOptionsPopup()">&times;</span>
-            <!-- this span tag is used to create the x on my menu which im still debating on creating a nicer one in css -->
-            <h2>Options</h2>
-            <label for="totalLives">Number of lives</label>
-            <input type="number" id="totalLives" min="1" max="9" value="3">
-            <button onclick="applyOptions()">Apply</button>
+          <span class="close" onclick="closeOptionsPopup()">&times;</span>
+          <!-- this span tag is used to create the x on my menu which im still debating on creating a nicer one in css -->
+          <h2>Options</h2>
+          <label for="totalLives">Number of lives</label>
+          <input type="number" id="totalLives" min="1" max="9" value="3" />
+          <button onclick="applyOptions()">Apply</button>
+          <div class="volumeContainer">
+            <button id="toggleMusicBtn">Mute Music</button>
+            <input
+              type="range"
+              id="volumeControl"
+              min="0"
+              max="1"
+              step="0.1"
+              value="1"
+            />
+          </div>
+              <!-- Background music by <a href="https://pixabay.com/users/viyn-18464741/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=13253">maulana akbarudin</a> from <a href="https://pixabay.com/music//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=13253">Pixabay</a> -->
+    <audio id="backgroundMusic" autoplay loop>
+        <source src="./assets/viyn-cotton-candy-loop-version-13253.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
         </div>
+      </div>
+      <h2>
+        Get ready for a meow-gical experience! Step into our cozy corner of the
+        world!
+      </h2>
     </div>
-    <h2>Get ready for a meow-gical experience! Step into our cozy corner of the world!</h2>
-    </div>
-
-
 
     <script src="./index.js"></script>
-</body>
+  </body>
 </html>
