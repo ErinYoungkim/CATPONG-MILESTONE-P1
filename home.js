@@ -14,10 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("h1 span").forEach(function (span) {
     span.style.animation = "pingPongEffect 2s ease-in-out 1";
   });
-let backgroundMusic = document.getElementById("backgroundMusic");
-document.addEventListener("click", () => {
-  playBackgroundMusic(backgroundMusic);
-})
+
+  let backgroundMusic = document.getElementById("backgroundMusic");
+  document.addEventListener("click", () => {
+    playBackgroundMusic(backgroundMusic);
+  });
 });
 
 playBackgroundMusic(backgroundMusic);
@@ -51,28 +52,25 @@ function closeOptionsPopup() {
 }
 
 function applyOptions() {
-let totalLivesInput = document.getElementById('totalLives');
-// A function that converts a string to an integer. It takes a string as an argument and returns an integer.
-// Example: `parseInt("3")` returns the integer `3`
-//  "parse" refers to the process of analyzing and interpreting data in a specific format
-let totalLives = parseInt(totalLivesInput.value);
+  let totalLivesInput = document.getElementById("totalLives");
+  // A function that converts a string to an integer. It takes a string as an argument and returns an integer.
+  // Example: `parseInt("3")` returns the integer `3`
+  //  "parse" refers to the process of analyzing and interpreting data in a specific format
+  let totalLives = parseInt(totalLivesInput.value);
 
-// initialize the message
-let message = ''
-if (totalLives === 9) {
-  message = 'You\'ve got the purr-fect number of lives! 🐾';
-} else {
-  // sets the message variable to a string using a template literal
-  message = `You applied ${totalLives} lives.`;
-}
-alert(message);
+  // initialize the message
+  let message = "";
+  if (totalLives === 9) {
+    message = "You've got the purr-fect number of lives! 🐾";
+  } else {
+    // sets the message variable to a string using a template literal
+    message = `You applied ${totalLives} lives.`;
+  }
+  alert(message);
 }
 // this function was to redirect my home page to the game page!
 function redirectToGamePage() {
   window.location.href = "game.html";
-}
-function redirectToHomePage() {
-  window.location.href = 'home.html';
 }
 
 function playBackgroundMusic(audioElement) {
@@ -84,5 +82,7 @@ function playBackgroundMusic(audioElement) {
 }
 // wanted an intuitive button for mute/unmute and used a ternary.
 function updateToggleButtonText() {
-  toggleMusicBtn.textContent = backgroundMusic.muted ? "Unmute Music" : "Mute Music"
+  toggleMusicBtn.textContent = backgroundMusic.muted
+    ? "Unmute Music"
+    : "Mute Music";
 }
