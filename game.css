@@ -30,7 +30,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -41,9 +41,15 @@
   #rightPaddle {
     right: 0;
   }
-  .cat-paddle img {
-    width: 150px;
-    height: 150px;
+  #rightPaddle img {
+    width: 300px;
+    height: 300px;
+    margin-right: -100px;
+  }
+  #leftPaddle img {
+    width: 360px;
+    height: 360px;
+    margin-left: -138px;
   }
   .ball {
     position: absolute;

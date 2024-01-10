@@ -11,20 +11,37 @@ h1 {
     font-size: 2em;
 }
 h2 {
-    font-family: 'Saira Semi Condensed', sans-serif;
-    font-weight: 40px;
+    font-family: 'Gamja Flower', sans-serif;
+    font-weight: 50px;
+    font-size: 30px;
     color: #333;
 }
-/* #imageBackground {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
-} */
+#main-container {
+    border: 2px solid blue;
+}
+.gameMenu {
+    margin-bottom: -2px;
+}
+h3 {
+    font-family: 'Gamja Flower', sans-serif;
+    font-size: 25px;
+}
+p {
+    font-family: 'Gamja Flower', sans-serif;
+    font-size: 20px;
+}
+.instructions {
+    margin-bottom: -26px;
+    text-decoration: underline;
+}
+#menuImg  {
+width: 50px;
+height: 50px;
+}
+#menuImg img {
+width: 700px;
+height: 700px;
+}
 #gameMenu {
     display: flex;
     text-align: center;
@@ -38,12 +55,13 @@ button {
     background-color: #c48ee4;
     color: #fff;
     width: 10em;
-    font-size: 16px;
+    font-size: 20px;
     padding: 10px 20px;
     margin: 5px;
     cursor: pointer;
     border: none;
     border-radius: 5px;
+    font-family: 'Gamja Flower', sans-serif;
 }
 button:hover {
     background-color: #bda8ca;
@@ -60,8 +78,8 @@ button:hover {
 label[for="totalLives"] {
     color: black;
     font-size: 16px;
-    font-family: 'Saira Semi Condensed', sans-serif;
-    font-weight: 40px;
+    font-family: 'Gamja Flower', sans-serif;
+    font-size: 25px;
 }
 input {
     height: 30px;
@@ -83,7 +101,7 @@ input[type="number"]::-webkit-outer-spin-button {
     background-color: #d06848;
     color: #fff;
     width: 10em;
-    font-size: 16px;
+    font-size: 20px;
     padding: 10px 20px;
     margin: 5px;
     cursor: pointer;

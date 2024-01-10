@@ -26,11 +26,6 @@ let toggleMusicBtn = document.getElementById("toggleMusicBtn");
 toggleMusicBtn.addEventListener("click", () => {
   backgroundMusic.muted = !backgroundMusic.muted;
   updateToggleButtonText();
-  // if (backgroundMusic.muted) {
-  //   toggleMusicBtn.textContent = "Unmute Music";
-  // } else {
-  //   toggleMusicBtn.textContent = "Mute Music";
-  // }
 });
 
 let volumeControl = document.getElementById("volumeControl");
@@ -55,7 +50,7 @@ function applyOptions() {
   let totalLivesInput = document.getElementById("totalLives");
   // A function that converts a string to an integer. It takes a string as an argument and returns an integer.
   // Example: `parseInt("3")` returns the integer `3`
-  //  "parse" refers to the process of analyzing and interpreting data in a specific format
+  // "parse" refers to the process of analyzing and interpreting data in a specific format
   let totalLives = parseInt(totalLivesInput.value);
 
   // initialize the message
