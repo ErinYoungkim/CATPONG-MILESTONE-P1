@@ -12,6 +12,7 @@
   </head>
   <body>
     <button onclick="redirectToHomePage()">Back to Home</button>
+    <button id="startButton">Start Game</button>
     <div class="scoreboard-container">
       <div class="scoreboard">
         <div class="player-1">
@@ -24,15 +25,16 @@
     </div>
     <div class="game-container">
       <div class="cat-paddle" id="leftPaddle">
-        <img src="./assets/left paw paddle.png" alt="Left Cat Paw" />
+        <img src="./assets/right paw paddle.png" alt="Left Cat Paw" />
       </div>
       <div class="ball" id="ball">
-        <img src="./assets/ball.jpg" alt="Tennis Ball" />
+        <img src="./assets/ball.png" alt="Tennis Ball" />
       </div>
       <div class="cat-paddle" id="rightPaddle">
         <img src="./assets/right paw paddle.png" alt="Right Cat Paw" />
       </div>
     </div>
+    <div id="winner"></div> 
     <script src="./game.js"></script>
   </body>
 </html>

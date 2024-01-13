@@ -1,3 +1,9 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .scoreboard-container {
     display: flex;
     flex-direction: column;
@@ -42,14 +48,12 @@
     right: 0;
   }
   #rightPaddle img {
-    width: 300px;
-    height: 300px;
-    margin-right: -100px;
+    width: 130px;
+    height: 130px;
   }
   #leftPaddle img {
-    width: 360px;
-    height: 360px;
-    margin-left: -138px;
+    width: 130px;
+    height: 130px;
   }
   .ball {
     position: absolute;
@@ -59,6 +63,6 @@
   }
   .ball img {
     display: flex;
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: 100px;
   }
