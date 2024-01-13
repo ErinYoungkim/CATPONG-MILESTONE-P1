@@ -1,5 +1,5 @@
 const paddleSpeed = 5;
-const ballSpeed = 0.2;
+const ballSpeed = 10;
 const maxScore = 9;
 
 let leftPaddle = document.getElementById('leftPaddle');
@@ -7,7 +7,7 @@ let rightPaddle = document.getElementById('rightPaddle');
 let ball = document.getElementById('ball');
 
 let gameContainerHeight = document.querySelector('.game-container').offsetHeight;
-let gameContainerTop = document.querySelector('.game-container').offsetTop;
+let gameContainerWidth = document.querySelector('.game-container').offsetWidth;
 
 // Initial positions of the paddles and ball
 let leftPaddleY = window.innerHeight / 2 - leftPaddle.offsetHeight / 2;
@@ -20,6 +20,17 @@ let ballY = window.innerHeight / 2;
 let moveLeftPaddle = 0;
 let moveRightPaddle = 0;
 let isGameStarted = false;
+
+//  track player scores, ball speed in the X and Y directions, and whether the ball is currently being reset
+let player1Score = 0;
+let player2Score = 0;
+let ballSpeedX = ballSpeed;
+let ballSpeedY = ballSpeed;
+let isBallResetting = false;
+
+// should display the winner
+let winnerElement = document.getElementById('winner');
+let winner = null;
 
 // Add event listeners for keydown and keyup events
 document.addEventListener('keydown', handleKeyDown);
@@ -36,6 +47,7 @@ function update() {
     if (moveRightPaddle !== 0) {
         movePaddle(rightPaddle, moveRightPaddle);
     }
+    // simple game loop with delay for 30 frames per second
     requestAnimationFrame(update);
 }
 // Start the game loop
@@ -96,22 +108,7 @@ function movePaddle(paddle, direction) {
     } else {
         rightPaddleY = newPaddleY;
     }
-
-    if (newPaddleY === gameContainerTop) {
-        return;
-    }
 }
-
-//  track player scores, ball speed in the X and Y directions, and whether the ball is currently being reset
-let player1Score = 0;
-let player2Score = 0;
-let ballSpeedX = ballSpeed;
-let ballSpeedY = ballSpeed;
-let isBallResetting = false;
-
-// should display the winner
-let winnerElement = document.getElementById('winner');
-let winner = null;
 
 // resets the ball to the center and sets its initial speed towards Player 1
 function resetBall() {
@@ -126,34 +123,37 @@ function moveBall() {
     ballX += ballSpeedX;
     ballY += ballSpeedY;
 
-    if (ballY <= 0 || ballY + ball.offsetHeight >= gameContainerHeight) {
+    if (ballY <= ball.offsetHeight / 2 || ballY + ball.offsetHeight / 2 >= gameContainerHeight) {
         ballSpeedY = -ballSpeedY; // boundaries of top and bottom
-        ballY = Math.max(0, Math.min(gameContainerHeight - ball.offsetHeight, ballY));
+        ballY = Math.max(
+            ball.offsetHeight / 2,
+            Math.min(gameContainerHeight - ball.offsetHeight / 2, ballY)
+        );
     }
 
     if (
-        ballX <= leftPaddle.offsetLeft + leftPaddle.offsetWidth &&
-        ballY >= leftPaddle.offsetTop &&
-        ballY <= leftPaddle.offsetTop + leftPaddle.offsetHeight
+        ballX - ball.offsetWidth / 2 <= leftPaddle.offsetLeft + leftPaddle.offsetWidth &&
+        ballY + ball.offsetHeight / 2 >= leftPaddle.offsetTop - leftPaddle.offsetHeight / 2 &&
+        ballY - ball.offsetHeight / 2 <= leftPaddle.offsetTop + leftPaddle.offsetHeight / 2
     ) {
         ballSpeedX = Math.abs(ballSpeedX); // Reverse horizontal direction on left paddle collision
     }
 
     if (
-        ballX + ball.offsetWidth >= rightPaddle.offsetLeft &&
-        ballY >= rightPaddle.offsetTop &&
-        ballY <= rightPaddle.offsetTop + rightPaddle.offsetHeight
+        ballX + ball.offsetWidth / 2 >= rightPaddle.offsetLeft &&
+        ballY + ball.offsetHeight / 2 >= rightPaddle.offsetTop - rightPaddle.offsetHeight / 2 &&
+        ballY - ball.offsetHeight / 2 <= rightPaddle.offsetTop + rightPaddle.offsetHeight / 2
     ) {
         ballSpeedX = -Math.abs(ballSpeedX); // Reverse horizontal direction on right paddle collision
     }
 
-    if (ballX + ball.offsetWidth >= window.innerWidth) {
+    if (ballX + ball.offsetWidth / 2 >= gameContainerWidth) {
         player1Score++;
         checkWinner();
         resetBall();
     }
 
-    if (ballX <= 0) {
+    if (ballX - ball.offsetWidth / 2 <= 0) {
         player2Score++;
         checkWinner();
         resetBall();
@@ -162,7 +162,6 @@ function moveBall() {
     updateScoreBoard();
     ball.style.left = `${ballX}px`;
     ball.style.top = `${ballY}px`;
-    requestAnimationFrame(moveBall);
 }
 
 function checkWinner() {
