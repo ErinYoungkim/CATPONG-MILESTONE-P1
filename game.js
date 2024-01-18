@@ -1,6 +1,7 @@
 const paddleSpeed = 5;
 const ballSpeed = 10;
-const maxScore = 9;
+const maxScore = sessionStorage.getItem("totalLives") || 9;
+
 
 
 let leftPaddle = document.getElementById("leftPaddle");

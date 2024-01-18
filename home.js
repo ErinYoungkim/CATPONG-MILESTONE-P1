@@ -21,6 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+let totalLives = 9;
+
+
 playBackgroundMusic(backgroundMusic);
 let toggleMusicBtn = document.getElementById("toggleMusicBtn");
 toggleMusicBtn.addEventListener("click", () => {
@@ -81,4 +84,7 @@ function updateToggleButtonText() {
   toggleMusicBtn.textContent = backgroundMusic.muted
     ? "Unmute Music"
     : "Mute Music";
+}
+function setTotalLives(totalLives) {
+  sessionStorage.setItem("totalLives", totalLives)
 }
