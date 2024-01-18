@@ -52,6 +52,7 @@ function applyOptions() {
   // Example: `parseInt("3")` returns the integer `3`
   // "parse" refers to the process of analyzing and interpreting data in a specific format
   let totalLives = parseInt(totalLivesInput.value);
+  setTotalLives(totalLives)
 
   // initialize the message
   let message = "";

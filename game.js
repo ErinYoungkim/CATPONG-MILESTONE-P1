@@ -1,15 +1,16 @@
 const paddleSpeed = 5;
-const ballSpeed = 0.2;
+const ballSpeed = 10;
 const maxScore = 9;
+
 
 let leftPaddle = document.getElementById("leftPaddle");
 let rightPaddle = document.getElementById("rightPaddle");
 let ball = document.getElementById("ball");
 
-let gameContainerHeight = document.querySelector(".game-container").offsetHeight
-let gameContainerTop = document.querySelector(".game-container").offsetTop;
-let gameContainerBottom = document.querySelector(".game-container").offsetBottom;
-
+let gameContainerHeight = document.querySelector(".game-container").offsetHeight;
+let gameContainerWidth = document.querySelector(".game-container").offsetWidth;
+// let gameContainerTop = document.querySelector(".game-container").offsetTop;
+// let gameContainerBottom = document.querySelector(".game-container").offsetBottom;
 
 // Initial positions of the paddles and ball
 let leftPaddleY = window.innerHeight / 2 - leftPaddle.offsetHeight / 2;
@@ -22,6 +23,17 @@ let ballY = window.innerHeight / 2;
 let moveLeftPaddle = 0;
 let moveRightPaddle = 0;
 let isGameStarted = false;
+
+//  track player scores, ball speed in the X and Y directions, and whether the ball is currently being reset
+let player1Score = 0;
+let player2Score = 0;
+let ballSpeedX = ballSpeed;
+let ballSpeedY = ballSpeed;
+let isBallResetting = false;
+
+// should display the winner
+let winnerElement = document.getElementById("winner");
+let winner = null;
 
 // Add event listeners for keydown and keyup events
 document.addEventListener("keydown", handleKeyDown);
@@ -81,17 +93,14 @@ function handleKeyUp(event) {
 
 // Move the paddles based on the direction and speed
 function movePaddle(paddle, direction) {
-  console.log(paddle.offsetHeight)
+  console.log(paddle.offsetHeight);
   // let vertical value of paddle = left else its right paddle value
-  // so that it can take both vertical values 
+  // so that it can take both vertical values
   let currentPaddleY = paddle === leftPaddle ? leftPaddleY : rightPaddleY;
   let newPaddleY = currentPaddleY + direction * paddleSpeed;
-console.log(currentPaddleY)
+  console.log(currentPaddleY);
   // Ensure the paddles stay within the window bounds from line 93-96
-  newPaddleY = Math.max(
-    65,
-    Math.min(gameContainerHeight - 65, newPaddleY)
-  );
+  newPaddleY = Math.max(65, Math.min(gameContainerHeight - 65, newPaddleY));
   // this takes the value and allows my paddles to move on the screen
   paddle.style.top = `${newPaddleY}px`;
   paddle.style.bottom = `${newPaddleY}px`;
@@ -100,23 +109,8 @@ console.log(currentPaddleY)
     leftPaddleY = newPaddleY;
   } else {
     rightPaddleY = newPaddleY;
-  }
-
-  if (newPaddleY === gameContainerTop) {
-    return
-  }
+  } 
 }
-
-//  track player scores, ball speed in the X and Y directions, and whether the ball is currently being reset
-let player1Score = 0;
-let player2Score = 0;
-let ballSpeedX = ballSpeed;
-let ballSpeedY = ballSpeed;
-let isBallResetting = false;
-
-// should display the winner
-let winnerElement = document.getElementById("winner");
-let winner = null;
 
 // resets the ball to the center and sets its initial speed towards Player 1
 function resetBall() {
@@ -131,37 +125,36 @@ function moveBall() {
   ballX += ballSpeedX;
   ballY += ballSpeedY;
 
-  if (ballY <= 0 || ballY + ball.offsetHeight >= window.innerHeight) {
+  if (ballY <= ball.offsetHeight / 2 || ballY + ball.offsetHeight / 2 >= gameContainerHeight) {
     ballSpeedY = -ballSpeedY; // boundaries of top and bottom
-    ballY = Math.max(
-      0,
-      Math.min(window.innerHeight - ball.offsetHeight, ballY)
-    );
-  }
+    ballY = Math.max(ball.offsetHeight / 2,
+    Math.min(gameContainerHeight - ball.offsetHeight / 2, ballY)
+  );
+}
 
   if (
-    ballX <= leftPaddle.offsetLeft + leftPaddle.offsetWidth &&
-    ballY >= leftPaddle.offsetTop &&
-    ballY <= leftPaddle.offsetTop + leftPaddle.offsetHeight
+    ballX - ball.offsetWidth / 2 <= leftPaddle.offsetLeft + leftPaddle.offsetWidth &&
+    ballY + ball.offsetHeight / 2 >= leftPaddle.offsetTop - leftPaddle.offsetHeight / 2 &&
+    ballY - ball.offsetHeight / 2 <= leftPaddle.offsetTop + leftPaddle.offsetHeight / 2
   ) {
     ballSpeedX = Math.abs(ballSpeedX); // Reverse horizontal direction on left paddle collision
   }
 
   if (
-    ballX + ball.offsetWidth >= rightPaddle.offsetLeft &&
-    ballY >= rightPaddle.offsetTop &&
-    ballY <= rightPaddle.offsetTop + rightPaddle.offsetHeight
+    ballX + ball.offsetWidth / 2 >= rightPaddle.offsetLeft &&
+    ballY + ball.offsetHeight / 2 >= rightPaddle.offsetTop - rightPaddle.offsetHeight / 2 &&
+    ballY - ball.offsetHeight / 2 <= rightPaddle.offsetTop + rightPaddle.offsetHeight / 2
   ) {
     ballSpeedX = -Math.abs(ballSpeedX); // Reverse horizontal direction on right paddle collision
   }
 
-  if (ballX + ball.offsetWidth >= window.innerWidth) {
+  if (ballX + ball.offsetWidth / 2 >= gameContainerWidth) {
     player1Score++;
     checkWinner();
     resetBall();
   }
 
-  if (ballX <= 0) {
+  if (ballX - ball.offsetWidth / 2 <= 0) {
     player2Score++;
     checkWinner();
     resetBall();
@@ -170,7 +163,6 @@ function moveBall() {
   updateScoreBoard();
   ball.style.left = `${ballX}px`;
   ball.style.top = `${ballY}px`;
-  requestAnimationFrame(moveBall);
 }
 
 function checkWinner() {
@@ -185,12 +177,8 @@ function showWinner() {
 }
 
 function updateScoreBoard() {
-  document.querySelector(
-    ".player-1 h2"
-  ).innerText = `PLAYER 1: ${player1Score}`;
-  document.querySelector(
-    ".player-2 h2"
-  ).innerText = `PLAYER 2: ${player2Score}`;
+  document.querySelector('.player-1 h2').innerText = `PLAYER 1: ${player1Score}`;
+  document.querySelector('.player-2 h2').innerText = `PLAYER 2: ${player2Score}`;
 }
 
 function resetGame() {
@@ -217,73 +205,3 @@ function redirectToHomePage() {
   window.location.href = "home.html";
 }
 
-// function resetBall() {
-//   ballX = window.innerHeight / 2;
-//   ballY = window.innerHeight / 2;
-//   ballSpeedX = -ballSpeedX;
-// }
-// function updateScoreBoard() {
-//   document.querySelector(
-//     ".player-1 h2"
-//   ).innerText = `PLAYER 1: ${player1Score}`;
-//   document.querySelector(
-//     ".player-2 h2"
-//   ).innerText = `PLAYER 2: ${player2Score}`;
-// }
-
-// Function to reset the game state
-// function resetGame() {
-//   isGameStarted = false;
-// }
-// Function to start start the game
-// function startGame() {
-//   resetGame();
-//   isGameStarted = true;
-//   console.log("Game started!");
-//   update();
-// }
-
-// if (ballY <= 0) {
-//   ballSpeedY = -ballSpeedY;
-// }
-// if (
-//   ballX <= leftPaddle.offsetLeft + leftPaddle.offsetWidth &&
-//   ballY >= leftPaddle.offsetTop &&
-//   ballY <= leftPaddle.offsetTop + leftPaddle.offsetHeight
-// ) {
-//   ballSpeedX = -ballSpeedX;
-// }
-
-// Move the ball
-// function moveBall() {
-//   // ball's position
-//   ballX += ballSpeedX;
-//   ballY += ballSpeedY;
-
-//   if (ballY <= 0 || ballY + ball.offsetHeight >= window.innerHeight) {
-//     ballSpeedY = -ballSpeedY;
-//     ballY = Math.max(0, Math.min(window.innerHeight - ball.offsetHeight, ballY));
-//   }
-
-//   if (ballX <= 0 || ballX + ball.offsetWidth >= window.innerWidth) {
-//   ballSpeedX = -ballSpeedX;
-//   ballX = Math.max(0, Math.min(window.innerWidth - ball.offsetWidth, ballX));
-//   }
-
-// if (ballX <= 0 || ballX + ball.offsetWidth >= window.innerWidth) {
-//   ballX = window.innerWidth / 2;
-//   ballY = window.innerHeight / 2;
-// }
-
-//   ball.style.left = `${ballX}px`;
-//   ball.style.top = `${ballY}px`;
-
-//   if (
-//     ballX <= leftPaddle.offsetLeft + leftPaddle.offsetWidth &&
-//     ballY >= leftPaddle.offsetTop &&
-//     ballY <= leftPaddle.offsetTop + leftPaddle.offsetHeight
-//   ) {
-//     ballSpeedX = Math.abs(ballSpeedX);
-//   }
-//   requestAnimationFrame(moveBall);
-// }
