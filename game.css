@@ -7,6 +7,22 @@ body {
 .buttons {
   display: flex;
 }
+.playerCards {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.playerCards img {
+  width: 160px;
+}
+.card1 {
+  position: absolute;
+  left: 20px;
+}
+.card2 {
+  position: absolute;
+  right: 17px;
+}
 .scoreboard-container {
     display: flex;
     flex-direction: column;
@@ -20,6 +36,9 @@ body {
     background-color: #c48ee4;
     padding: 10px;
     margin-bottom: 10px;
+  }
+  #modalWinner {
+    color: black;
   }
   h2 {
     color: white;

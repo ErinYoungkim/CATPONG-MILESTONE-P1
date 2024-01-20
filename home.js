@@ -10,21 +10,34 @@ document.addEventListener("DOMContentLoaded", () => {
       span.style.animation = `cascadeBounce 2s infinite ${delay}`;
     });
   });
-  //keep existing logic for the pingPongEffect
+  //keep your existing logic for the pingPongEffect
   document.querySelectorAll("h1 span").forEach(function (span) {
     span.style.animation = "pingPongEffect 2s ease-in-out 1";
   });
 
   let backgroundMusic = document.getElementById("backgroundMusic");
-  document.addEventListener("click", () => {
-    playBackgroundMusic(backgroundMusic);
+
+  // Add an event listener to prevent starting music when clicking on the page
+  document.addEventListener("click", (event) => {
+    // Check if the clicked element is not the startMusicButton
+    if (event.target.id !== "startMusicButton") {
+      // playBackgroundMusic(backgroundMusic);
+    }
   });
 });
 
 let totalLives = 9;
 
+document.getElementById("startMusicButton").addEventListener("click", startBackgroundMusic);
 
-playBackgroundMusic(backgroundMusic);
+function startBackgroundMusic() {
+  document.getElementById("backgroundMusic").play();
+
+  // Hide the button or remove it from the DOM
+  document.getElementById("startMusicButton").style.display = "none";
+}
+
+// playBackgroundMusic(backgroundMusic);
 let toggleMusicBtn = document.getElementById("toggleMusicBtn");
 toggleMusicBtn.addEventListener("click", () => {
   backgroundMusic.muted = !backgroundMusic.muted;
