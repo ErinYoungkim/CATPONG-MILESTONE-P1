@@ -8,14 +8,13 @@ document.addEventListener("DOMContentLoaded", () => {
       // Delay the cascading animation of the first letter
       const delay = firstLetter === span ? "1s" : `${0.1 * (index + 1)}s`;
       span.style.animation = `cascadeBounce 2s infinite ${delay}`;
+      // The first letter has a delay of "1s", and the subsequent letters have a delay based on their index and a factor of 0.1 seconds.
     });
   });
-  //keep your existing logic for the pingPongEffect
+  // duration of 2 seconds, an ease-in-out timing function, and it will run once to each <span> element inside <h1>. 
   document.querySelectorAll("h1 span").forEach(function (span) {
     span.style.animation = "pingPongEffect 2s ease-in-out 1";
   });
-
-  let backgroundMusic = document.getElementById("backgroundMusic");
 
   // Add an event listener to prevent starting music when clicking on the page
   document.addEventListener("click", (event) => {
@@ -27,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 let totalLives = 9;
+let backgroundMusic = document.getElementById("backgroundMusic");
 
 document.getElementById("startMusicButton").addEventListener("click", startBackgroundMusic);
 
