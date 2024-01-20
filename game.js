@@ -1,14 +1,13 @@
 const paddleSpeed = 5;
-const ballSpeed = 10;
+const ballSpeed = 6;
 const maxScore = sessionStorage.getItem("totalLives") || 9;
-
-
 
 let leftPaddle = document.getElementById("leftPaddle");
 let rightPaddle = document.getElementById("rightPaddle");
 let ball = document.getElementById("ball");
 
-let gameContainerHeight = document.querySelector(".game-container").offsetHeight;
+let gameContainerHeight =
+  document.querySelector(".game-container").offsetHeight;
 let gameContainerWidth = document.querySelector(".game-container").offsetWidth;
 // let gameContainerTop = document.querySelector(".game-container").offsetTop;
 // let gameContainerBottom = document.querySelector(".game-container").offsetBottom;
@@ -110,7 +109,7 @@ function movePaddle(paddle, direction) {
     leftPaddleY = newPaddleY;
   } else {
     rightPaddleY = newPaddleY;
-  } 
+  }
 }
 
 // resets the ball to the center and sets its initial speed towards Player 1
@@ -126,25 +125,34 @@ function moveBall() {
   ballX += ballSpeedX;
   ballY += ballSpeedY;
 
-  if (ballY <= ball.offsetHeight / 2 || ballY + ball.offsetHeight / 2 >= gameContainerHeight) {
+  if (
+    ballY <= ball.offsetHeight / 2 ||
+    ballY + ball.offsetHeight / 2 >= gameContainerHeight
+  ) {
     ballSpeedY = -ballSpeedY; // boundaries of top and bottom
-    ballY = Math.max(ball.offsetHeight / 2,
-    Math.min(gameContainerHeight - ball.offsetHeight / 2, ballY)
-  );
-}
+    ballY = Math.max(
+      ball.offsetHeight / 2,
+      Math.min(gameContainerHeight - ball.offsetHeight / 2, ballY)
+    );
+  }
 
   if (
-    ballX - ball.offsetWidth / 2 <= leftPaddle.offsetLeft + leftPaddle.offsetWidth &&
-    ballY + ball.offsetHeight / 2 >= leftPaddle.offsetTop - leftPaddle.offsetHeight / 2 &&
-    ballY - ball.offsetHeight / 2 <= leftPaddle.offsetTop + leftPaddle.offsetHeight / 2
+    ballX - ball.offsetWidth / 2 <=
+      leftPaddle.offsetLeft + leftPaddle.offsetWidth &&
+    ballY + ball.offsetHeight / 2 >=
+      leftPaddle.offsetTop - leftPaddle.offsetHeight / 2 &&
+    ballY - ball.offsetHeight / 2 <=
+      leftPaddle.offsetTop + leftPaddle.offsetHeight / 2
   ) {
     ballSpeedX = Math.abs(ballSpeedX); // Reverse horizontal direction on left paddle collision
   }
 
   if (
     ballX + ball.offsetWidth / 2 >= rightPaddle.offsetLeft &&
-    ballY + ball.offsetHeight / 2 >= rightPaddle.offsetTop - rightPaddle.offsetHeight / 2 &&
-    ballY - ball.offsetHeight / 2 <= rightPaddle.offsetTop + rightPaddle.offsetHeight / 2
+    ballY + ball.offsetHeight / 2 >=
+      rightPaddle.offsetTop - rightPaddle.offsetHeight / 2 &&
+    ballY - ball.offsetHeight / 2 <=
+      rightPaddle.offsetTop + rightPaddle.offsetHeight / 2
   ) {
     ballSpeedX = -Math.abs(ballSpeedX); // Reverse horizontal direction on right paddle collision
   }
@@ -165,21 +173,63 @@ function moveBall() {
   ball.style.left = `${ballX}px`;
   ball.style.top = `${ballY}px`;
 }
+// Add event listener for restart button
+document.getElementById("restartButton").addEventListener("click", restartGame);
+
+// Function to restart the game
+function restartGame() {
+  // Reset game variables and state
+  player1Score = 0;
+  player2Score = 0;
+  isGameStarted = false;
+
+  // Reset paddles to initial positions
+  leftPaddleY = window.innerHeight / 2 - leftPaddle.offsetHeight / 2;
+  rightPaddleY = window.innerHeight / 2 - rightPaddle.offsetHeight / 2;
+  leftPaddle.style.top = `${leftPaddleY}px`;
+  rightPaddle.style.top = `${rightPaddleY}px`;
+
+  winnerElement.innerText = "";
+
+  // Update the display
+  updateScoreBoard();
+
+  // Start the game again if needed
+  startGame();
+
+  // Hide the restart button again
+  document.getElementById("restartButton").style.display = "none";
+}
+
+// Hide the restart button initially
+document.getElementById("restartButton").style.display = "none";
 
 function checkWinner() {
   if (player1Score >= maxScore || player2Score >= maxScore) {
+    if (player1Score > player2Score) {
+      winner = "Player 1";
+    } else {
+      winner = "Player 2";
+    }
     showWinner();
   }
 }
 
 function showWinner() {
   winnerElement.innerText = `Winner: ${winner}`;
+  openModal(winner);
   resetGame();
+      // Show the restart button
+      document.getElementById("restartButton").style.display = "block";
 }
 
 function updateScoreBoard() {
-  document.querySelector('.player-1 h2').innerText = `PLAYER 1: ${player1Score}`;
-  document.querySelector('.player-2 h2').innerText = `PLAYER 2: ${player2Score}`;
+  document.querySelector(
+    ".player-1 h2"
+  ).innerText = `PLAYER 1: ${player1Score}`;
+  document.querySelector(
+    ".player-2 h2"
+  ).innerText = `PLAYER 2: ${player2Score}`;
 }
 
 function resetGame() {
@@ -202,7 +252,14 @@ function startGame() {
 
 document.getElementById("startButton").addEventListener("click", startGame);
 
+function openModal(winner) {
+  document.getElementById("modalWinner").innerText = `Winner: ${winner}`;
+  document.getElementById("winnerModal").style.display = "block";
+}
+// function closeModal() {
+//   document.getElementById("winnerModal").style.display = "none";
+// }
+
 function redirectToHomePage() {
   window.location.href = "home.html";
 }
-

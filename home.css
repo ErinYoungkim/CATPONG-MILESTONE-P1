@@ -2,23 +2,17 @@ body {
     background-color: #ffc0cb;
 }
 h1 {
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
     text-align: center;
     color: #333;
     font-family: 'Titan One', sans-serif;
     font-size: 2em;
 }
-h2 {
+#popup {
     font-family: 'Gamja Flower', sans-serif;
     font-weight: 50px;
     font-size: 30px;
-    color: #333;
 }
-/* #main-container {
-    border: 2px solid blue;
-} */
+
 .gameMenu {
     margin-bottom: -2px;
 }
@@ -34,13 +28,30 @@ p {
     margin-bottom: -26px;
     text-decoration: underline;
 }
-#menuImg  {
-width: 50px;
-height: 50px;
+#blackCat {
+    width: 700px;
+    height: 700px;
+    position: absolute;
+    left: -141px;
+    top: 63px;
 }
-#menuImg img {
-width: 700px;
-height: 700px;
+#sunGlasses {
+    width: 700px;
+    height: 700px;
+    position: absolute;
+    right: -83px;
+}
+
+#blackCat, #sunGlasses {
+    animation: swayAnimation 2s ease-in-out infinite;
+}
+@keyframes swayAnimation {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(20px);
+    }
 }
 #gameMenu {
     display: flex;
@@ -91,8 +102,8 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .close {
     position: absolute;
-    bottom: 679px;
-    right: 730px;
+    bottom: 654px;
+    right: 695px;
     font-size: 40px;
     color: #333;
     cursor: pointer;

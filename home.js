@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
       span.style.animation = `cascadeBounce 2s infinite ${delay}`;
     });
   });
-  //keep your existing logic for the pingPongEffect
+  //keep existing logic for the pingPongEffect
   document.querySelectorAll("h1 span").forEach(function (span) {
     span.style.animation = "pingPongEffect 2s ease-in-out 1";
   });

@@ -11,8 +11,11 @@
     </style>
   </head>
   <body>
-    <button onclick="redirectToHomePage()">Back to Home</button>
-    <button id="startButton">Start Game</button>
+    <div class="buttons">
+      <button onclick="redirectToHomePage()">Back to Home</button>
+      <button id="startButton">Start Game</button>
+      <button id="restartButton" onclick="restartGame()">Restart Game</button>
+    </div>
     <div class="scoreboard-container">
       <div class="scoreboard">
         <div class="player-1">
@@ -32,6 +35,11 @@
       </div>
       <div class="cat-paddle" id="rightPaddle">
         <img src="./assets/right paw paddle.png" alt="Right Cat Paw" />
+      </div>
+      <div id="winnerModal" class="modal">
+        <div class="modal-content">
+          <h2 id="modalWinner"></h2>
+        </div>
       </div>
     </div>
     <div id="winner"></div> 

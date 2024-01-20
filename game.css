@@ -4,10 +4,12 @@ body {
   justify-content: center;
   align-items: center;
 }
+.buttons {
+  display: flex;
+}
 .scoreboard-container {
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
     align-items: center;
     margin-top: 10px;
   }
@@ -15,22 +17,31 @@ body {
     display: flex;
     align-items: center;
     border: 2px solid black;
+    background-color: #c48ee4;
     padding: 10px;
+    margin-bottom: 10px;
   }
-  .player-1 .player-2 h2{
-    margin: 1em;
+  h2 {
+    color: white;
+    padding: 5px;
   }
   .player-1,
   .player-2 {
     border: 2px solid black;
   }
+  .modal {
+    z-index: 2;
+    text-align: center;
+  }
   .game-container {
     display: flex;
+    background-color: #ffbaf9;
     height: 70vh;
     width: 80vw;
     border: 2px solid black;
     flex-direction: row;
     position: relative;
+    z-index: 1;
   }
   .cat-paddle {
     height: 130px;
