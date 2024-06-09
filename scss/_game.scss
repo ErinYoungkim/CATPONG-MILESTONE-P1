@@ -1,0 +1,51 @@
+@use 'config';
+
+// nested
+.game-container {
+    display: flex;
+    background-color: config.$secondary-color;
+    height: 70vh;
+    width: 80vw;
+    border: 2px solid config.$border-color;
+    flex-direction: row;
+    position: relative;
+    z-index: 1;
+
+    .cat-paddle {
+        @include config.flex-center;
+        height: 130px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    // nested
+    #leftPaddle {
+        left: 0;
+
+        img {
+            width: 130px;
+            height: 130px;
+        }
+    }
+    // nested
+    #rightPaddle {
+        right: 0;
+
+        img {
+            width: 130px;
+            height: 130px;
+        }
+    }
+    // nested
+    .ball {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        img {
+            width: 50px;
+            height: 50px;
+        }
+    }
+}

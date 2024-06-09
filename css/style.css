@@ -17,6 +17,67 @@ button:hover {
   background-color: #bda8ca;
 }
 
+.game-container {
+  display: flex;
+  background-color: #ffbaf9;
+  height: 70vh;
+  width: 80vw;
+  border: 2px solid black;
+  flex-direction: row;
+  position: relative;
+  z-index: 1;
+}
+.game-container .cat-paddle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 130px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.game-container #leftPaddle {
+  left: 0;
+}
+.game-container #leftPaddle img {
+  width: 130px;
+  height: 130px;
+}
+.game-container #rightPaddle {
+  right: 0;
+}
+.game-container #rightPaddle img {
+  width: 130px;
+  height: 130px;
+}
+.game-container .ball {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.game-container .ball img {
+  width: 50px;
+  height: 50px;
+}
+
+.playerCards {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.playerCards img {
+  width: 160px;
+}
+.playerCards .card1 {
+  position: absolute;
+  left: 20px;
+}
+.playerCards .card2 {
+  position: absolute;
+  right: 17px;
+}
+
 body {
   display: flex;
   justify-content: center;
