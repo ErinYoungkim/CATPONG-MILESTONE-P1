@@ -1,0 +1,21 @@
+@use 'config';
+
+
+
+button {
+    @include config.flex-center;
+    background: config.$primary-color;
+    color: config.$text-color;
+    width: 10em;
+    font-size: 20px;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    font-family: config.$font-family;
+
+    &:hover {
+        background-color: config.$hover-color;
+    }
+}

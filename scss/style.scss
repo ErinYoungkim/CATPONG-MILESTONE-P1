@@ -1,0 +1,9 @@
+@use 'btnConfig';
+@use 'config';
+
+
+
+body {
+    @include config.flex-center;
+    flex-direction: column;
+}

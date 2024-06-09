@@ -1,4 +1,4 @@
-body {
+/* body {
     background-color: #ffc0cb;
 }
 h1 {
@@ -60,7 +60,6 @@ p {
     align-items: center;
     height: 80vh;
     flex-direction: column;
-    /* border: 2px solid black; */
 }
 button {
     background-color: #c48ee4;
@@ -97,8 +96,7 @@ input {
 }
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
-    height: 30px; /* Adjust the height of the up/down buttons */
-    /* To style the up/down buttons of an input with type="number," you can use the ::-webkit-inner-spin-button and ::-webkit-outer-spin-button pseudo-elements */
+    height: 30px; 
 }
 .close {
     position: absolute;
@@ -128,7 +126,6 @@ input[type="number"]::-webkit-outer-spin-button {
 #volumeContainer {
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
     align-items: center;
 }
 @keyframes pingPongEffect {
@@ -169,5 +166,5 @@ h1 span:nth-child(1), h1 span:nth-child(2), h1 span:nth-child(3), h1 span:nth-ch
     100% {
         transform: translateY(0);
     }
-}
+} */
 

@@ -1,0 +1,17 @@
+$font-family: 'Gamja Flower', cursive;
+$font-weight: 50;
+$font-size: 30px;
+
+$primary-color: #c48ee4;
+$hover-color: #bda8ca;
+$text-color: white;
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+

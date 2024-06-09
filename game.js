@@ -139,12 +139,16 @@ function moveBall() {
   if (
     ballX - ball.offsetWidth / 2 <=
       leftPaddle.offsetLeft + leftPaddle.offsetWidth &&
+      // This checks if the left edge of the ball is to the left of the right edge of the left paddle.
     ballY + ball.offsetHeight / 2 >=
       leftPaddle.offsetTop - leftPaddle.offsetHeight / 2 &&
+      // This checks if the bottom edge of the ball is below the top edge of the left paddle.
     ballY - ball.offsetHeight / 2 <=
       leftPaddle.offsetTop + leftPaddle.offsetHeight / 2
+      //  This checks if the top edge of the ball is above the bottom edge of the left paddle.
   ) {
     ballSpeedX = Math.abs(ballSpeedX); // Reverse horizontal direction on left paddle collision
+                                      // function in JavaScript is used to return the absolute value of a number.
   }
 
   if (
