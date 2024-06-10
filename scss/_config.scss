@@ -1,13 +1,18 @@
+// fonts
 $font-family: 'Gamja Flower', cursive;
 $font-weight: 50;
 $font-size: 30px;
 
+// colors
 $border-color: black;
 $primary-color: #c48ee4;
 $secondary-color: #ffbaf9;
+$background-color: #ffc0cb;
 $hover-color: #bda8ca;
 $text-color: white;
+$modal-text-color: black;
 
+// flex center
 @mixin flex-center {
     display: flex;
     justify-content: center;

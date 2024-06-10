@@ -3,7 +3,6 @@
 
 
 button {
-    @include config.flex-center;
     background: config.$primary-color;
     color: config.$text-color;
     width: 10em;

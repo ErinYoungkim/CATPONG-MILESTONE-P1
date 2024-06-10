@@ -1,2 +1,26 @@
+@use 'config';
 
+// nested
+.scoreboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
 
+    .scoreboard {
+        display: flex;
+        align-items: center;
+        border: 2px solid config.$border-color;
+        background-color: config.$primary-color;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+.player-1, .player-2 {
+    border: 2px solid config.$border-color;
+}
+
+#modalWinner {
+    color: config.$modal-text-color;
+}

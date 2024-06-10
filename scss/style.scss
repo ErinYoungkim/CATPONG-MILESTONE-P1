@@ -1,11 +1,19 @@
 @use 'config';
 @use 'btnConfig';
+@use 'scoreboard';
 @use 'game';
 @use 'player-cards';
-
+@use 'modal';
 
 
 body {
     @include config.flex-center;
     flex-direction: column;
+    background-color: config.$background-color;
+}
+
+h2 {
+    color: config.$text-color;
+    padding: 5px;
+    font-family: 5px;
 }

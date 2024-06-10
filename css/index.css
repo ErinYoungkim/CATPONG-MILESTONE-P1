@@ -1,4 +1,4 @@
-/* body {
+body {
     background-color: #ffc0cb;
 }
 h1 {
@@ -166,5 +166,5 @@ h1 span:nth-child(1), h1 span:nth-child(2), h1 span:nth-child(3), h1 span:nth-ch
     100% {
         transform: translateY(0);
     }
-} */
+}
 
