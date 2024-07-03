@@ -42,18 +42,16 @@
           <span>g</span>
         </h1>
         <h2 id="popup" class="gameMenu">Game Menu</h2>
-        <button onclick="showOptions()">Options</button>
-        <button onclick="redirectToGamePage()">Play Game</button>
+        <button id="optionsButton">Options</button>
+        <button id="playGameButton">Play Game</button>
         <button id="startMusicButton">Start Music</button>
-        <!-- i want to redirect my users from one page to another and in this case the main menu to the actual game -->
         <div id="optionsPopup" class="popup">
           <div class="popup-content">
-            <span class="close" onclick="closeOptionsPopup()">&times;</span>
-            <!-- this span tag is used to create the x on my menu which im still debating on creating a nicer one in css -->
+            <span class="close" id="closeOptionsPopup">&times;</span>
             <h2 id="popup">Options</h2>
             <label for="totalLives">Number of lives</label>
             <input type="number" id="totalLives" min="1" max="9" value="3" />
-            <button onclick="applyOptions()">Apply</button>
+            <button id="applyOptionsButton">Apply</button>
             <div class="volumeContainer">
               <button id="toggleMusicBtn">Mute Music</button>
               <input
@@ -65,7 +63,6 @@
                 value="1"
               />
             </div>
-            <!-- Background music by <a href="https://pixabay.com/users/viyn-18464741/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=13253">maulana akbarudin</a> from <a href="https://pixabay.com/music//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=13253">Pixabay</a> -->
             <audio id="backgroundMusic" loop>
               <source
                 src="./assets/viyn-cotton-candy-loop-version-13253.mp3"
@@ -81,9 +78,9 @@
               <h3>Objective</h3>
               <p>
                 Claw your way to victory with feline finesse outlast, outplay,
-                outcat!"
+                outcat!
               </p>
-              <p>First to score upto max points wins</p>
+              <p>First to score up to max points wins</p>
             </div>
           </div>
         </div>
@@ -93,6 +90,6 @@
         </h2>
       </div>
     </div>
-    <script src="./index.js"></script>
+    <script src="./index.js" type="module"></script>
   </body>
 </html>
